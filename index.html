@@ -2,28 +2,31 @@
     <meta charset="utf-8">
     <head><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css">
 
-        <link rel="stylesheet" href="styles.css">
+        <link rel="stylesheet" href="css/styles.css">
         <link href="https://fonts.googleapis.com/css2?family=Baloo&display=swap" rel="stylesheet">
     </head>
     <body>
-        <h1>Emoji 😇 Love - Emoji 👿 Hate</h1>
-        <div class="main-container">
-            <div id="like-emojis"></div>
-            <div id="dislike-emojis"></div>   
+        <h1>Do you use this Emoji? 🤔</h1>
+        <div class="main-container">         
+            <div id="yes-container"> 
+                <h2>✅Yes</h2>
+                <div id="yes-emojis">
+                </div>
+            </div>
+            <div id="no-container">
+                <h2>❎No</h2>
+                <div id="no-emojis">
+                </div>
+            </div>   
         </div>
-
-        <div id="emoji-container">
-        </div>
-        <input type="text" id="emoji-input" placeholder="type an emoji 🎉">
+        <input type="text" id="emoji-input">
         <div class="buttons-wrapper">
-            <button id="push-btn">Add to end</button>
-            <button id="unshift-btn">Add to beginning</button>
+            <button id="yes-btn">I use it</button>
+            <button id="no-btn">Dont use it</button>
         </div>
         <div class="buttons-wrapper">
-            <button id="pop-btn">Remove from end</button>
-            <button id="shift-btn">Remove from beginning</button>
-            <button id="clearstorage-btn">clear Local Storage</button>
+            <button id="clearstorage-btn">Clear out the Emojis</button>
         </div>
-        <script src="app.js"></script>
+        <script src="js/app.js"></script>
     </body>
 </html

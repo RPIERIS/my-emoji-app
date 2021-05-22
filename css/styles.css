@@ -4,46 +4,55 @@ html {
 }
 
 body {
-    padding: 10px;
     background-image: linear-gradient(#5DA4D9, #FFF);
+    box-sizing: border-box;
 }
 
-#emoji-container {
-    margin: 40px;
+#yes-container,
+#no-container {
+    margin: 5px;
     text-align: center;
 }
 
-#emoji-container span {
+#yes-container span,
+#no-container span {
     margin: 10px;
-    font-size: 60px;
+    font-size: 40px;
 }
 
 .main-container {
     display: flex;
-    width: 100vw;
     height: 50%;
-    background-color: #E23349;
+    font-size: large;
+    width: 90vw;
+    margin: 0 auto;
 }
 
-#like-emojis {
+@media screen and (min-width: 800px){
+    .main-container {
+        max-width: 60%;
+    }
+}
+
+#yes-container,
+#no-container {
+    align-items: center;
+    text-align: center;
     width: 50%;
-    background-image: url("images/heaven.jpg");
-    background-size: cover;
+    font-size: 1.2rem;
 }
 
-#dislike-emojis {
-    width: 50%;
-    background-image: url("images/hell.jpg");
-    background-repeat: no-repeat;
-    background-size:cover;
-
+span {
+    margin: 5px;
+    padding-top: 5px;
 }
 
-#push-btn, #unshift-btn {
+
+#yes-btn{
     background-color: #80D87F;
 }
 
-#shift-btn,#pop-btn {
+#no-btn {
     background-color: #E23349;
 }
 
@@ -68,7 +77,7 @@ button {
     background: darkcyan;
     color: white;
     border: none;
-    padding: 4px 10px;
+    padding: 10px 20px;
     border-radius: 6px;
     margin: 0 4px;
 }

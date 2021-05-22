@@ -1,12 +1,26 @@
-let myEmojis = []
+let myYesEmojis = []
+let myNoEmojis = []
+let emojiList = ["🈁","😍","😎","🥳","🤓","🥇","🀄","👩🏽‍💻","🙆🏽‍♀️","🤦🏽‍♂️","✌🏽","🖐🏽","👏🏽"]
 let myEmojisFromLocalStorage = JSON.parse(localStorage.getItem("myEmojis"))
-const emojiContainer = document.getElementById("emoji-container")
+const yesContainer = document.getElementById("yes-emojis")
+const noContainer = document.getElementById("no-emojis")
 const emojiInput = document.getElementById("emoji-input")
-const pushBtn = document.getElementById("push-btn")
-const unshiftBtn = document.getElementById("unshift-btn")
-const popBtn = document.getElementById("pop-btn")
-const shiftBtn = document.getElementById("shift-btn")
+const yesBtn = document.getElementById("yes-btn")
+const noBtn = document.getElementById("no-btn")
 const clearstorageBtn = document.getElementById("clearstorage-btn")
+
+
+function randomEmoji(myArray) {
+    let randomNumber = Math.floor(Math.random() * myArray.length)
+    return emojiList[randomNumber]
+} 
+
+function inputUpdate() {
+    let newEmoji = randomEmoji(emojiList)
+    emojiInput.value = newEmoji
+}
+
+inputUpdate()
 
 if (myEmojisFromLocalStorage) {
     myEmojis = myEmojisFromLocalStorage
@@ -20,20 +34,21 @@ function renderEmojis(items) {
     for (let i = 0; i < items.length; i++) {
         emoji += `<span>${items[i]}</span>`
     } 
-    emojiContainer.innerHTML = emoji
+    yesContainer.innerHTML = emoji
 }
 
 
-pushBtn.addEventListener("click", function(){
+yesBtn.addEventListener("click", function(){
     if (emojiInput.value) {
         myEmojis.push(emojiInput.value)
         emojiInput.value = ""
         localStorage.setItem("myEmojis", JSON.stringify(myEmojis))
         renderEmojis(myEmojis)
+        inputUpdate()
     }
 })
 
-unshiftBtn.addEventListener("click", function(){
+noBtn.addEventListener("click", function(){
     if (emojiInput.value) {
         myEmojis.unshift(emojiInput.value)
         emojiInput.value = ""
@@ -42,17 +57,17 @@ unshiftBtn.addEventListener("click", function(){
     }
 })
 
-popBtn.addEventListener("click", function() {
-    myEmojis.pop()
-    localStorage.setItem("myEmojis", JSON.stringify(myEmojis))
-    renderEmojis(myEmojis)
-})
+// popBtn.addEventListener("click", function() {
+//     myEmojis.pop()
+//     localStorage.setItem("myEmojis", JSON.stringify(myEmojis))
+//     renderEmojis(myEmojis)
+// })
 
-shiftBtn.addEventListener("click", function() {
-    myEmojis.shift()
-    localStorage.setItem("myEmojis", JSON.stringify(myEmojis))
-    renderEmojis(myEmojis)
-})
+// shiftBtn.addEventListener("click", function() {
+//     myEmojis.shift()
+//     localStorage.setItem("myEmojis", JSON.stringify(myEmojis))
+//     renderEmojis(myEmojis)
+// })
 
 clearstorageBtn.addEventListener("dblclick", function(){
     localStorage.clear()
@@ -60,5 +75,6 @@ clearstorageBtn.addEventListener("dblclick", function(){
     emojiInput.value = ""
     myEmojisFromLocalStorage = ""
     renderEmojis(myEmojisFromLocalStorage)
+    inputUpdate()
 })
 
