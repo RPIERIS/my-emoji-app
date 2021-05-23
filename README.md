@@ -1,24 +1,16 @@
-# Emoji Love - Emoji Hate
+# Do you use this emoji
 
-I have created this from a Scrimba Module. I also use MDN Web Docs quite regularly to learn. My aim was to adapt the emoji course and use everything I learnt on Module 3 in the project. A few elements I found very interesting were 
+I have created this from the [Your personality in emojis section](https://scrimba.com/learn/frontend/you-in-emojis-cWvQ9rT2) on module 3 in Scrimba. I also use MDN Web Docs quite regularly to learn.  My aim was to adapt the emoji course and use everything I learnt on Module 3 in the project. A few elements I found very interesting were 
 
 1. localStorage - JS function with the ability to getItem, setItem and clear. I also learnt about JSON.parse and JSON.stringify. These were needed as localstorage saves as a string. An array would need to be changed.
 2. Math.Random and Math.floor. Creating random numbers was fun and I wanted to incorporate it to the project.
 
-## images 
-heaven
-Photo by <a href="https://unsplash.com/@kaushikpanchal?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Kaushik Panchal</a> on <a href="https://unsplash.com/s/photos/heaven?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
-
-hell
-Photo by <a href="https://unsplash.com/@ianstauffer?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Ian Stauffer</a> on <a href="https://unsplash.com/s/photos/hell?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
-
-
-
+The idea of the app is to see if the person uses a emoji or not. I ideally would have liked to test the knowledge of someone on Emojis but I dont have the knowledge at present. One thing I would like to incorporate to the project is not to repeat the random emojis. However I dont know how to go along and find the relevant emoji to remove.
 ## Experimenting code
 
 I am using the below section to experitment with some elements.  
 
-One of the first things I did was to see if I could save and load everythings as an array. However it appears that emojis have different lenths so it is not possible to place them on the browser/user-agent via a for loop. I found a question for this on Stack Overflow asking ["how can I split a string containing emoji into an array"](https://stackoverflow.com/questions/24531751/how-can-i-split-a-string-containing-emoji-into-an-array). The below code is an unsuccesful attempt at it. 
+One of the first things I did was to see if I could save and load everythings as an array. However it appears that emojis have different lengths so it is not possible to place them on the browser/user-agent via a for loop. I found a question for this on Stack Overflow asking ["how can I split a string containing emoji into an array"](https://stackoverflow.com/questions/24531751/how-can-i-split-a-string-containing-emoji-into-an-array). The below code is an unsuccesful attempt at it. 
 
 ```
 pushBtn.addEventListener("click", function(){
@@ -42,28 +34,7 @@ pushBtn.addEventListener("click", function(){
     }
 })
 ```
-
-## Words by Scrimba
-
-# title(){
-		
-		return this.options.title || this.options.name;
-	}
-
-Quick start:
-
-```
-$ yarn # npm install
-$ yarn build # npm run build
-````
-
-## Development
-
-Run Webpack in watch-mode to continually compile the JavaScript as you work:
-
-```
-$ yarn watch # npm run watch
-```
+I also tried out the [conic gradient from MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/gradient). Something different 😁 
 
 ## Supporting Scrimba
 

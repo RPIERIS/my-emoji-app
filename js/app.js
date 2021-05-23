@@ -1,7 +1,10 @@
 let myYesEmojis = []
 let myNoEmojis = []
-let emojiList = ["🈁","😍","😎","🥳","🤓","🥇","🀄","👩🏽‍💻","🙆🏽‍♀️","🤦🏽‍♂️","✌🏽","🖐🏽","👏🏽"]
-let myEmojisFromLocalStorage = JSON.parse(localStorage.getItem("myEmojis"))
+let emojiList = ["🈁","😍","😎","🥳","🤓","🥇","🀄","👩🏽‍💻","🙆🏽‍♀️","🤦🏽‍♂️","✌🏽","🖐🏽","👏🏽","😫","😴","😛","😕","🙃","🤯","🤬","😈","😇","🦖"]
+let yesSelect = false
+let noSelect = false
+let myYesEmojisFromLocalStorage = JSON.parse(localStorage.getItem("myYesEmojis"))
+let myNoEmojisFromLocalStorage = JSON.parse(localStorage.getItem("myNoEmojis"))
 const yesContainer = document.getElementById("yes-emojis")
 const noContainer = document.getElementById("no-emojis")
 const emojiInput = document.getElementById("emoji-input")
@@ -22,59 +25,74 @@ function inputUpdate() {
 
 inputUpdate()
 
-if (myEmojisFromLocalStorage) {
-    myEmojis = myEmojisFromLocalStorage
-    console.log(myEmojis)
-    renderEmojis(myEmojisFromLocalStorage)
+
+if (myYesEmojisFromLocalStorage) {
+    yesSelect = true
+    myYesEmojis = myYesEmojisFromLocalStorage
+    renderEmojis(myYesEmojisFromLocalStorage)
 }
+
+if (myNoEmojisFromLocalStorage){
+    noSelect = true
+    myNoEmojis = myNoEmojisFromLocalStorage
+    renderEmojis(myNoEmojisFromLocalStorage)
+}
+
 
 
 function renderEmojis(items) {
     let emoji = ""
     for (let i = 0; i < items.length; i++) {
         emoji += `<span>${items[i]}</span>`
+        if(yesSelect) {
+            yesContainer.innerHTML = emoji
+        } else if (noSelect) {
+            noContainer.innerHTML = emoji
+        } 
     } 
-    yesContainer.innerHTML = emoji
+    noSelect = false
+    yesSelect = false    
+}
+
+function renderClear (){
+    yesContainer.innerHTML = ""
+    noContainer.innerHTML = ""
 }
 
 
 yesBtn.addEventListener("click", function(){
     if (emojiInput.value) {
-        myEmojis.push(emojiInput.value)
+        yesSelect = true
+        myYesEmojis.push(emojiInput.value)
         emojiInput.value = ""
-        localStorage.setItem("myEmojis", JSON.stringify(myEmojis))
-        renderEmojis(myEmojis)
+        localStorage.setItem("myYesEmojis", JSON.stringify(myYesEmojis))
+        renderEmojis(myYesEmojis)
         inputUpdate()
     }
 })
 
 noBtn.addEventListener("click", function(){
     if (emojiInput.value) {
-        myEmojis.unshift(emojiInput.value)
+        noSelect = true
+        myNoEmojis.push(emojiInput.value)
         emojiInput.value = ""
-        localStorage.setItem("myEmojis", JSON.stringify(myEmojis))
-        renderEmojis(myEmojis)
+        localStorage.setItem("myNoEmojis", JSON.stringify(myNoEmojis))
+        renderEmojis(myNoEmojis)
+        inputUpdate()
     }
 })
 
-// popBtn.addEventListener("click", function() {
-//     myEmojis.pop()
-//     localStorage.setItem("myEmojis", JSON.stringify(myEmojis))
-//     renderEmojis(myEmojis)
-// })
 
-// shiftBtn.addEventListener("click", function() {
-//     myEmojis.shift()
-//     localStorage.setItem("myEmojis", JSON.stringify(myEmojis))
-//     renderEmojis(myEmojis)
-// })
 
 clearstorageBtn.addEventListener("dblclick", function(){
     localStorage.clear()
-    myEmojis = []
-    emojiInput.value = ""
-    myEmojisFromLocalStorage = ""
-    renderEmojis(myEmojisFromLocalStorage)
+    myYesEmojis = []
+    myNoEmojis = []
+    myYesEmojisFromLocalStorage = []
+    myNoEmojisFromLocalStorage = []
+    renderEmojis(myYesEmojisFromLocalStorage)
+    renderEmojis(myNoEmojisFromLocalStorage)
+    renderClear()
     inputUpdate()
 })
 
