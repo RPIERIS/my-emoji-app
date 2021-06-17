@@ -94,5 +94,6 @@ clearstorageBtn.addEventListener("dblclick", function(){
     renderEmojis(myNoEmojisFromLocalStorage)
     renderClear()
     inputUpdate()
+    console.log("cleared")
 })
 
